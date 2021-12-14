@@ -4,7 +4,7 @@ Library            RequestsLibrary
 Library            DateTime
 Library            String
 
-Documentation      GraphQL API Calls for the application stored in this file
+Documentation      GraphQL Query to call countries API
 
 *** Variables ***
 

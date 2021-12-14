@@ -17,8 +17,8 @@ Verify The Countries API - success reponse
     ${response}=        Post Response    ${COUNTRIES_API_URL}
 
     Log    Validate the successful response
-    Should Not Be Empty           ${response['data']}
     Status Should Be        expected_status=200
+    Should Not Be Empty           ${response['data']}
 
 Verify The Countries List
     Log    Send the post request with the valid query
@@ -27,7 +27,7 @@ Verify The Countries List
     ${total_countries}=     Get Length      ${response['data']['countries']}
     ${total_count}=     Convert To String   ${total_countries}
     Should Be Equal       ${total_count}    250
-    log     verify some countries names
+    log     verify countries sub list
     ${count}=   Get Length      ${COUNTRY_LIST}
     FOR    ${country}   IN RANGE    ${count}
             Should Be Equal As Strings      ${COUNTRY_LIST[${country}]}     ${response['data']['countries'][${country}]['name']}
@@ -52,6 +52,7 @@ Verify The Single Country Info
 Verify Countries API - failed response
     [Documentation]     Returns the response of the post Request
 
+    Log    Send the post request with the invalid query
     ${headers}=    Create Dictionary    Content-Type=application/json
 
      ${body}=       Create dictionary   query= query {countrie}
@@ -59,6 +60,4 @@ Verify Countries API - failed response
 
     ${response}=    POST On Session    mysession   ${COUNTRIES_API_URL}    json=${body}     expected_status=400
     Status Should Be        expected_status=400
-
-    Log    Validate the failed response
     Delete All Sessions

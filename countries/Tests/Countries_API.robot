@@ -4,7 +4,6 @@ Library            OperatingSystem
 Library            Collections
 Library            String
 Library            RequestsLibrary
-Library            JSONLibrary
 
 Resource           ../Pages/Countries.robot
 
@@ -12,7 +11,7 @@ Suite Setup        SuiteSetup API
 Suite Teardown     SuiteTeardown API
 Test Setup         TestCaseSetup
 
-Documentation       GraphQL public countries API
+Documentation       GraphQL public countries API tests
 
 *** Variables ***
 
